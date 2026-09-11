@@ -10,19 +10,23 @@
     --text-secondary:#666666;
 
     /* Colores amaderados */
-    --wood-dark: #3b2a20; 
+    --wood-dark: #3b2a20;
     --wood-primary: #6b4f3a;
     --wood-light: #a67c52;
 
     /* Colores de la marca */
     --accent: #8b5e34;
-    --acent-hover:#6f4727; 
+    --accent-hover:#6f4727;
 
     /* Selecciones */
     --button-selected: #222222;
 
     /* Estados */
     --error-color: #b83232;
+
+    /* Bordes */
+    --border-color: #dddddd;
+    --input-border: #bbbbbb;
 }
 
 /* Configuración general de la página */
@@ -43,28 +47,60 @@ body{
     line-height: 1.6;
 }
 
-/* Estilos para el encabezado */
+/* Foco visible con teclado en todos los elementos interactivos */
+a:focus-visible,
+button:focus-visible{
+    outline: 2px solid var(--wood-light);
+    outline-offset: 3px;
+}
 
+/* Estilos para el encabezado */
 header{
-    background: var(--wood-dark);
+    background-color: var(--wood-dark);
     color: #ffffff;
-    padding: 20px 0;
-    text-align: center;
+    padding: 18px 0;
 }
 
 /* Menu de navegación */
-
 nav{
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-nav-links{
+/* Logo / nombre de la tienda */
+.logo{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.logo-icono{
+    color: var(--wood-light);
+    font-size: 1.7rem;
+    line-height: 1;
+}
+
+.logo:hover{
+    color: var(--wood-light);
+}
+
+.nav-links{
     list-style: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 35px;
 }
 
@@ -72,11 +108,61 @@ nav-links{
     color: #ffffff;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .nav-links a:hover{
     color: var(--wood-light);
+    border-bottom-color: var(--wood-light);
+}
+
+/* Botón hamburguesa (oculto en escritorio) */
+.menu-toggle{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.menu-toggle:hover{
+    border-color: var(--wood-light);
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.menu-toggle__barra{
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.menu-toggle:hover .menu-toggle__barra{
+    background-color: var(--wood-light);
+}
+
+/* Animación de hamburguesa a "X" cuando el menú está abierto */
+.menu-toggle.abierto .menu-toggle__barra:nth-child(1){
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.abierto .menu-toggle__barra:nth-child(2){
+    opacity: 0;
+}
+
+.menu-toggle.abierto .menu-toggle__barra:nth-child(3){
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 /* Estilos para el contenido principal */
@@ -99,6 +185,7 @@ section{
 
 #inicio h1{
     font-size: 2.8rem;
+    line-height: 1.2;
     color: var(--wood-dark);
     margin-bottom: 20px;
 }
@@ -115,6 +202,7 @@ section h2{
     text-align: center;
     color: var(--wood-dark);
     font-size: 2rem;
+    line-height: 1.3;
     margin-bottom: 25px;
 }
 
@@ -126,8 +214,8 @@ section > p{
 /* Categorías */
 #categorias{
     background-color: var(--bg-secondary);
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .categoria-boton{
@@ -139,6 +227,7 @@ section > p{
 }
 
 .btn-categoria{
+    font-family: inherit;
     background-color: var(--wood-primary);
     color: #ffffff;
     border: none;
@@ -152,12 +241,24 @@ section > p{
 
 .btn-categoria:hover{
     background-color: var(--accent-hover);
+    color: #ffffff;
     transform: translateY(-2px);
 }
 
 .btn-categoria:active{
     background-color: var(--button-selected);
     color: #ffffff;
+    transform: translateY(0);
+}
+
+/* Categoría seleccionada (se aplica desde main.js agregando la clase "activo") */
+.btn-categoria.activo{
+    background-color: var(--button-selected);
+    color: #ffffff;
+}
+
+.btn-categoria.activo:hover{
+    background-color: var(--button-selected);
 }
 
 /* Catálogo */
@@ -171,14 +272,14 @@ section > p{
 }
 
 /* Formulario de pedido */
-
 #form-pedido{
     max-width: 600px;
     margin: 30px auto 0;
     padding: 30px;
-    background-color: var(--bg-primary);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 10px rgba(59, 42, 32, 0.08);
 }
 
 .form-group{
@@ -196,11 +297,18 @@ section > p{
 .form-group select{
     width: 100%;
     padding: 11px 12px;
-    border: 1px solid #bbb;
+    border: 1px solid var(--input-border);
     border-radius: 5px;
     background-color: #ffffff;
     color: var(--text-primary);
+    font-family: inherit;
     font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:hover,
+.form-group select:hover{
+    border-color: var(--wood-light);
 }
 
 .form-group input:focus,
@@ -208,6 +316,17 @@ section > p{
     outline: none;
     border-color: var(--wood-primary);
     box-shadow: 0 0 0 2px rgba(107, 79, 58, 0.15);
+}
+
+.form-group select{
+    cursor: pointer;
+}
+
+/* Campo con error (se aplica desde main.js agregando la clase "input-error") */
+.form-group input.input-error,
+.form-group select.input-error{
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 2px rgba(184, 50, 50, 0.12);
 }
 
 /* Botón de envío del formulario */
@@ -218,18 +337,28 @@ section > p{
     border-radius: 5px;
     background-color: var(--wood-dark);
     color: #ffffff;
+    font-family: inherit;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #form-pedido button[type="submit"]:hover{
     background-color: var(--accent-hover);
+    color: #ffffff;
+}
+
+#form-pedido button[type="submit"]:active{
+    background-color: var(--button-selected);
+    transform: translateY(1px);
 }
 
 /* Mensajes de error */
 .error{
+    display: block;
+    margin-top: 6px;
+    font-size: 0.9rem;
     color: var(--error-color);
 }
 
@@ -246,14 +375,74 @@ footer p{
     margin: 0;
 }
 
-/* Estilos responsivos */
-@media (max-width: 768px){
-    .nav-links{
-        flex-direction: column;
-        gap: 15px;
+/* Reducir animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce){
+    html{
+        scroll-behavior: auto;
     }
 
-    #inicio {
+    *{
+        transition: none !important;
+    }
+}
+
+/* Celulares y tablets: menú hamburguesa */
+@media (max-width: 1024px){
+    nav{
+        row-gap: 0;
+    }
+
+    .menu-toggle{
+        display: flex;
+    }
+
+    /* El menú ocupa toda la fila debajo del logo y arranca cerrado */
+    .nav-links{
+        flex-basis: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        transition: max-height 0.35s ease, margin-top 0.35s ease, visibility 0s linear 0.35s;
+    }
+
+    /* Menú abierto (la clase la agrega main.js) */
+    .nav-links.abierto{
+        max-height: 320px;
+        margin-top: 14px;
+        visibility: visible;
+        transition: max-height 0.35s ease, margin-top 0.35s ease, visibility 0s linear 0s;
+    }
+
+    .nav-links li{
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .nav-links a{
+        display: block;
+        padding: 14px 10px;
+        border-bottom: none;
+        border-radius: 4px;
+    }
+
+    .nav-links a:hover{
+        background-color: rgba(255, 255, 255, 0.06);
+    }
+}
+
+/* Celulares */
+@media (max-width: 768px){
+    header{
+        padding: 14px 0;
+    }
+
+    .logo{
+        font-size: 1.15rem;
+    }
+
+    #inicio{
         padding: 70px 20px;
     }
 
@@ -261,15 +450,19 @@ footer p{
         font-size: 2.2rem;
     }
 
-    section {
+    section{
         padding: 45px 15px;
+    }
+
+    section h2{
+        font-size: 1.7rem;
     }
 
     #form-pedido{
         padding: 20px;
     }
 
+    .btn-categoria{
+        padding: 10px 18px;
+    }
 }
-
-
-

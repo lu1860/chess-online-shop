@@ -3,15 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> ChessOnline Shop - Tienda de Ajedrez</title>
+    <title>ChessOnline Shop - Tienda de Ajedrez</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <!-- Encabezado de la pagina de ajedrez -->
     <header>
-        <nav>
-            <ul class="nav-links">
+        <nav aria-label="Navegación principal">
+            <a href="#inicio" class="logo">
+                <span class="logo-icono" aria-hidden="true">&#9822;</span>
+                ChessOnline Shop
+            </a>
+
+            <!-- Botón hamburguesa (visible solo en celular y tablet) -->
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menu-toggle"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="nav-links">
+                <span class="menu-toggle__barra"></span>
+                <span class="menu-toggle__barra"></span>
+                <span class="menu-toggle__barra"></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#categorias">Categorías</a></li>
                 <li><a href="#catalogo">Catálogo</a></li>
@@ -82,6 +100,6 @@
     </footer>
 
     <script src="main.js"></script>
-    
+
 </body>
 </html>
