@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ChessOnline Shop - Tienda de Ajedrez</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Encabezado de la pagina de ajedrez -->
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#categorias">Categorías</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#pedido">Hacer Pedido</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio">
+            <h1>Bienvenido a ChessOnline Shop</h1>
+            <p>Descubre nuestra amplia selección de piezas de ajedrez y accesorios.</p>
+        </section>
+
+        <section id="categorias">
+            <h2>Categorías Destacadas</h2>
+            <div class="categoria-boton">
+                <button class="btn-categoria" data-categoria="todos">Todos</button>
+                <button class="btn-categoria" data-categoria="tableros">Tableros</button>
+                <button class="btn-categoria" data-categoria="piezas">Piezas</button>
+                <button class="btn-categoria" data-categoria="relojes">Relojes</button>
+                <button class="btn-categoria" data-categoria="libros">Libros</button>
+            </div>
+        </section>
+
+        <section id="catalogo">
+            <h2>Catálogo</h2>
+            <p>Consulta nuestro catálogo completo de productos.</p>
+        </section>
+
+        <section id="pedido">
+            <h2>Simulación de pedido</h2>
+            <p>Haz tu pedido en línea fácilmente.</p>
+            <form id="form-pedido" novalidate>
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="producto">Producto:</label>
+                    <select id="producto" name="producto" required>
+                        <option value="">Selecciona un producto</option>
+                        <option value="tablero">Tablero</option>
+                        <option value="pieza">Pieza de ajedrez</option>
+                        <option value="reloj">Reloj de ajedrez</option>
+                        <option value="libro">Libro de ajedrez</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" min="1" value="1" required>
+                </div>
+
+                <button type="submit">Hacer Pedido</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ChessOnline Shop.</p>
+    </footer>
+
+    <script src="main.js"></script>
+    
+</body>
+</html>
