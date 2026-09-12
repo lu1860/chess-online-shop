@@ -3,7 +3,6 @@
     /* Fondos*/
     --bg-primary:#f5f1e8;
     --bg-secondary:#ffffff;
-    --bg-dark: #1c1c1c;
 
     /* Colores de texto */
     --text-primary:#222222;
@@ -15,7 +14,6 @@
     --wood-light: #a67c52;
 
     /* Colores de la marca */
-    --accent: #8b5e34;
     --accent-hover:#6f4727;
 
     /* Selecciones */
@@ -23,6 +21,8 @@
 
     /* Estados */
     --error-color: #b83232;
+    --success-color: #2f6b3f;
+    --success-bg: #eef6f0;
 
     /* Bordes */
     --border-color: #dddddd;
@@ -356,6 +356,16 @@ section > p{
     transform: translateY(0);
 }
 
+/* Confirmación breve al agregar (la clase la agrega y quita main.js) */
+.btn-agregar.agregado{
+    background-color: var(--success-color);
+}
+
+.btn-agregar.agregado:hover{
+    background-color: var(--success-color);
+    transform: none;
+}
+
 
 /* Formulario de pedido */
 #form-pedido{
@@ -446,6 +456,32 @@ section > p{
     margin-top: 6px;
     font-size: 0.9rem;
     color: var(--error-color);
+}
+
+/* Sin texto no ocupa espacio, así el formulario no "salta" al validar */
+.error:empty{
+    display: none;
+}
+
+/* Mensaje de pedido registrado (lo muestra main.js al validar correctamente) */
+.mensaje-exito{
+    margin-top: 20px;
+    padding: 14px 16px;
+    border: 1px solid var(--success-color);
+    border-left: 4px solid var(--success-color);
+    border-radius: 5px;
+    background-color: var(--success-bg);
+    color: var(--success-color);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Mensaje cuando un filtro no devuelve productos */
+.catalogo-vacio{
+    margin-top: 35px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
 }
 
 /* Pie de página */

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tienda en línea de tableros, piezas, relojes y libros de ajedrez.">
     <title>ChessOnline Shop - Tienda de Ajedrez</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -47,11 +48,11 @@
         <section id="categorias">
             <h2>Categorías Destacadas</h2>
             <div class="categoria-boton">
-                <button class="btn-categoria" data-categoria="todos">Todos</button>
-                <button class="btn-categoria" data-categoria="tableros">Tableros</button>
-                <button class="btn-categoria" data-categoria="piezas">Piezas</button>
-                <button class="btn-categoria" data-categoria="relojes">Relojes</button>
-                <button class="btn-categoria" data-categoria="libros">Libros</button>
+                <button type="button" class="btn-categoria" data-categoria="todos" aria-pressed="true">Todos</button>
+                <button type="button" class="btn-categoria" data-categoria="tableros" aria-pressed="false">Tableros</button>
+                <button type="button" class="btn-categoria" data-categoria="piezas" aria-pressed="false">Piezas</button>
+                <button type="button" class="btn-categoria" data-categoria="relojes" aria-pressed="false">Relojes</button>
+                <button type="button" class="btn-categoria" data-categoria="libros" aria-pressed="false">Libros</button>
             </div>
         </section>
 
@@ -59,128 +60,58 @@
             <h2>Catálogo</h2>
             <p>Consulta nuestro catálogo completo de productos.</p>
 
-            <div class="catalogo-grid">
-                <article class="producto-card" data-categoria="tableros">
-                    <div class="producto-imagen">
-                        <img src="img/tablero-madera.jpg" alt="Tablero de ajedrez de madera">
-                    </div>
-                    <div class="producto-info">
-                        <h3>Tablero de Ajedrez de madera</h3>
-                        <p class="producto-descripcion">Tablero de ajedrez de madera de muy alta calidad.</p>
-                        <p class="producto-precio">$150.000</p>
-                        <button class="btn-agregar" data-producto="tablero-madera">Agregar al pedido</button>
-                    </div>
-                </article>
+            <!-- Las tarjetas las genera main.js desde el arreglo "productos" -->
+            <div class="catalogo-grid" id="catalogo-grid" aria-live="polite"></div>
 
-    
-                <!-- Piezas -->
-                <article class="producto-card" data-categoria="piezas">
-                    <div class="producto-imagen">
-                        <img src="img/piezas-staunton.jpg" alt="Piezas de ajedrez staunton torneadas">
-                    </div>
-                    <div class="producto-info">
-                        <h3>Piezas staunton</h3>
-                        <p class="producto-descripcion">Juego de piezas torneadas en staunton con acabado mate.</p>
-                        <p class="producto-precio">$65.000</p>
-                        <button class="btn-agregar" data-producto="piezas-staunton">Agregar al pedido</button>
-                    </div>
-                </article>
- 
-                <article class="producto-card" data-categoria="piezas">
-                    <div class="producto-imagen">
-                        <img src="img/piezas-madera.jpg" alt="Piezas de ajedrez de madera talladas a mano">
-                    </div>
-                    <div class="producto-info">
-                        <h3>Piezas Madera Artesanal</h3>
-                        <p class="producto-descripcion">Piezas talladas a mano en madera de ébano y boj. Diseño clásico Staunton.</p>
-                        <p class="producto-precio">$120.000</p>
-                        <button class="btn-agregar" data-producto="piezas-madera">Agregar al pedido</button>
-                    </div>
-                </article>
- 
-                <!-- Relojes -->
-                <article class="producto-card" data-categoria="relojes">
-                    <div class="producto-imagen">
-                        <img src="img/reloj-digital.jpg" alt="Reloj de ajedrez digital con display LCD">
-                    </div>
-                    <div class="producto-info">
-                        <h3>Reloj Digital DGT</h3>
-                        <p class="producto-descripcion">Reloj digital profesional con display LCD, modos de juego y alerta sonora. Aprobado por la FIDE.</p>
-                        <p class="producto-precio">$200.000</p>
-                        <button class="btn-agregar" data-producto="reloj-digital">Agregar al pedido</button>
-                    </div>
-                </article>
- 
-                <article class="producto-card" data-categoria="relojes">
-                    <div class="producto-imagen">
-                        <img src="img/reloj-analogico.jpg" alt="Reloj de ajedrez analógico clásico">
-                    </div>
-                    <div class="producto-info">
-                        <h3>Reloj Analógico Clásico</h3>
-                        <p class="producto-descripcion">Reloj mecánico tradicional con diseño vintage. Mecanismo de precisión y tapa protectora.</p>
-                        <p class="producto-precio">$100.000</p>
-                        <button class="btn-agregar" data-producto="reloj-analogico">Agregar al pedido</button>
-                    </div>
-                </article>
- 
-                <!-- Libros -->
-                <article class="producto-card" data-categoria="libros">
-                    <div class="producto-imagen">
-                        <img src="img/libro-aperturas.jpg" alt="Libro de ajedrez sobre aperturas modernas">
-                    </div>
-                    <div class="producto-info">
-                        <h3>Aperturas Modernas</h3>
-                        <p class="producto-descripcion">Guía completa de aperturas contemporáneas con análisis de Grandes Maestros. Nivel intermedio-avanzado.</p>
-                        <p class="producto-precio">$39.990</p>
-                        <button class="btn-agregar" data-producto="libro-aperturas">Agregar al pedido</button>
-                    </div>
-                </article>
- 
-                <article class="producto-card" data-categoria="libros">
-                    <div class="producto-imagen">
-                        <img src="img/libro-estrategia.jpg" alt="Libro de estrategia y táctica de ajedrez">
-                    </div>
-                    <div class="producto-info">
-                        <h3>Estrategia y Táctica</h3>
-                        <p class="producto-descripcion">Manual de estrategia posicional y combinaciones tácticas. Ejercicios prácticos incluidos.</p>
-                        <p class="producto-precio">$55.990</p>
-                        <button class="btn-agregar" data-producto="libro-estrategia">Agregar al pedido</button>
-                    </div>
-                </article>
-            </div>
+            <p class="catalogo-vacio" id="catalogo-vacio" hidden>
+                No hay productos en esta categoría por ahora.
+            </p>
+
+            <noscript>
+                <p class="catalogo-vacio">
+                    El catálogo se carga con JavaScript. Actívalo en tu navegador para ver los productos.
+                </p>
+            </noscript>
         </section>
 
         <section id="pedido">
             <h2>Simulación de pedido</h2>
             <p>Haz tu pedido en línea fácilmente.</p>
+
             <form id="form-pedido" novalidate>
                 <div class="form-group">
                     <label for="nombre">Nombre Completo:</label>
-                    <input type="text" id="nombre" name="nombre" required>
+                    <input type="text" id="nombre" name="nombre" autocomplete="name"
+                           aria-describedby="error-nombre" required>
+                    <span class="error" id="error-nombre" aria-live="polite"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Correo Electrónico:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" autocomplete="email"
+                           aria-describedby="error-email" required>
+                    <span class="error" id="error-email" aria-live="polite"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="producto">Producto:</label>
-                    <select id="producto" name="producto" required>
+                    <!-- Las opciones las agrega main.js desde el mismo arreglo del catálogo -->
+                    <select id="producto" name="producto" aria-describedby="error-producto" required>
                         <option value="">Selecciona un producto</option>
-                        <option value="tablero">Tablero</option>
-                        <option value="pieza">Pieza de ajedrez</option>
-                        <option value="reloj">Reloj de ajedrez</option>
-                        <option value="libro">Libro de ajedrez</option>
                     </select>
+                    <span class="error" id="error-producto" aria-live="polite"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="cantidad">Cantidad:</label>
-                    <input type="number" id="cantidad" name="cantidad" min="1" value="1" required>
+                    <input type="number" id="cantidad" name="cantidad" min="1" max="20" value="1"
+                           aria-describedby="error-cantidad" required>
+                    <span class="error" id="error-cantidad" aria-live="polite"></span>
                 </div>
 
                 <button type="submit">Hacer Pedido</button>
+
+                <p class="mensaje-exito" id="mensaje-exito" aria-live="polite" hidden></p>
             </form>
         </section>
     </main>
