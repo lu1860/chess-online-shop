@@ -21,6 +21,10 @@ https://chess-online-shop.vercel.app/
 
 ![Vista Móvil](img/captura-movil.png)
 
+### Vista Tablet
+
+![Vista Tablet](img/captura-tablet.png)
+
 ## Decisiones técnicas
 
 ### ¿Dónde usaste Flexbox y dónde Grid, y por qué en cada caso?
